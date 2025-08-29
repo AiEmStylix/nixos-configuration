@@ -11,20 +11,15 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    git
-    neovim
     wget
     curl
+    neovim
     alacritty
     sbctl
     niv
-    wl-clipboard
-    nixd
-    tree-sitter
-    vscode
-    nixfmt-rfc-style
   ];
 
   # Set the default editor to neovim
   environment.variables.EDITOR = "neovim";
+  programs.zsh.enable = true;
 }

@@ -31,7 +31,7 @@
             home-manager.nixosModules.home-manager
 
             {
-              home-manager.users.stylix = ./home/stylix;
+              home-manager.users.stylix = import ./home/stylix/home.nix;
             }
           ];
         };
