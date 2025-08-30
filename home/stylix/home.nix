@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   home.username = "stylix";
@@ -22,10 +27,7 @@
     starship
   ];
 
-  wayland.windowManager.hyprland= {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.system}.default;
-  }
+  wayland.windowManager.hyprland.enable = true;
 
   programs.zsh = {
     enable = true;

@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+  programs.zsh.enable = true;
   users.users.stylix = {
     isNormalUser = true;
     description = "stylix";
@@ -10,5 +11,5 @@
     ];
     shell = pkgs.zsh;
   };
-  programs.zsh.enable = true;
+
 }
