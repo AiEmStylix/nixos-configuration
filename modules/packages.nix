@@ -17,9 +17,9 @@
     alacritty
     sbctl
     niv
+    home-manager
   ];
 
   # Set the default editor to neovim
   environment.variables.EDITOR = "neovim";
-  programs.zsh.enable = true;
 }

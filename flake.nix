@@ -3,36 +3,41 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    }
   };
 
   outputs =
     {
       self,
       nixpkgs,
-      home-manager,
       ...
-    }:
+    }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
+      pkgs = import nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = true;
+        };
+      };
     in
     {
       nixosConfigurations = {
         laptop = nixpkgs.lib.nixosSystem {
-          inherit system;
+          specialArgs = { inherit inputs system; };
           modules = [
             ./hosts/laptop/configuration.nix
             ./hosts/laptop/hardware-configuration.nix
 
-            # Home manager
-
-            home-manager.nixosModules.home-manager
-
-            {
-              home-manager.users.stylix = import ./home/stylix/home.nix;
-            }
           ];
         };
       };
