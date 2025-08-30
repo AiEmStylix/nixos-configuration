@@ -32,7 +32,20 @@
     options = "--delete-older-than 7d";
   };
 
+  services.xserver = {
+    enable = true;
+    displayManager.gdm = {
+      enable = true;
+      wayland = true;
+    };
+  };
   programs.firefox.enable = true;
+
+  # Fonts packages
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+  ];
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
