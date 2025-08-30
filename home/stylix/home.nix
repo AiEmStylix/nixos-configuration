@@ -11,6 +11,10 @@
 
   home.stateVersion = "25.05";
 
+  imports = [
+    ./hyprconf.nix
+  ];
+
   home.sessionVariables = {
     EDITOR = "nvim";
   };
@@ -26,8 +30,6 @@
     ripgrep
     starship
   ];
-
-  wayland.windowManager.hyprland.enable = true;
 
   programs.zsh = {
     enable = true;

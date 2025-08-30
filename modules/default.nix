@@ -1,5 +1,5 @@
 {
-  import = [
+  imports = [
     ./audio.nix
     ./boot.nix
     ./i18n.nix

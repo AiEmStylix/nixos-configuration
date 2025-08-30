@@ -14,8 +14,8 @@
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
-    users = {
-      stylix = import ../../home/stylix/home.nix;
+    users.stylix = {
+      imports = [ ../../home/stylix/home.nix ];
     };
     useGlobalPkgs = true;
   };
@@ -32,18 +32,7 @@
     options = "--delete-older-than 7d";
   };
 
-  # Install firefox.
   programs.firefox.enable = true;
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;

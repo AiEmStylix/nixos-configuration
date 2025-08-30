@@ -12,4 +12,5 @@
     shell = pkgs.zsh;
   };
 
+  services.getty.autologinUser = "stylix";
 }
