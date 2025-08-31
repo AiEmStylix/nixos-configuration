@@ -13,6 +13,7 @@
 
   imports = [
     ./hyprconf.nix
+    ./waybar.nix
   ];
 
   home.sessionVariables = {
@@ -29,6 +30,8 @@
     fzf
     ripgrep
     starship
+    gh
+    wofi
   ];
 
   programs.zsh = {

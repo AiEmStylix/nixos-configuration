@@ -14,10 +14,11 @@ in
 
     exec-once = [ "${terminal}" ];
     bind = [
-      "${mod}, Q, exec, alacritty"
+      "${mod}, Q, exec, ${terminal}"
       "${mod}, F, exec, firefox"
       "${mod}, C, killactive"
       "${mod}, M, exit"
+      "${mod}, R, exec, ${menu}"
 
       # Move focus with mod + hjkl (vim keys)
       "${mod}, H, movefocus, l"
@@ -54,7 +55,7 @@ in
 
     general = {
       gaps_in = 5;
-      gaps_out = 20;
+      gaps_out = 10;
 
       border_size = 2;
 
@@ -66,6 +67,21 @@ in
       allow_tearing = false;
 
       layout = "dwindle";
+    };
+
+    decoration = {
+      rounding = 10;
+      rounding_power = 2;
+
+      active_opacity = 1.0;
+      inactive_opacity = 1.0;
+
+      shadow = {
+        enabled = true;
+        range = 4;
+        render_power = 3;
+        color = "rgba(1a1a1aee)";
+      };
     };
   };
 }

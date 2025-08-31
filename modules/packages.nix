@@ -21,5 +21,13 @@
   ];
 
   # Set the default editor to neovim
-  environment.variables.EDITOR = "neovim";
+  environment.variables = {
+    EDITOR = "neovim";
+  };
+
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+  };
+  environment.variables.BROWSER = "firefox";
 }
