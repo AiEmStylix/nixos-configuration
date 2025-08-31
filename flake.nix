@@ -13,6 +13,11 @@
       url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix = {
+      url = "github:nix-community/stylix/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -20,6 +25,7 @@
       self,
       nixpkgs,
       home-manager,
+      stylix,
       ...
     }@inputs:
     let

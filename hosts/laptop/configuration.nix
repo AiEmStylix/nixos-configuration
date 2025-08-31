@@ -10,6 +10,7 @@
     ../../modules/default.nix
     ../../modules/hyprland.nix
     inputs.home-manager.nixosModules.home-manager
+    inputs.stylix.nixosModules.stylix
   ];
 
   home-manager = {
@@ -18,6 +19,14 @@
       imports = [ ../../home/stylix/home.nix ];
     };
     useGlobalPkgs = true;
+    backupFileExtension = "backup";
+  };
+
+  stylix = {
+    enable = true;
+    autoEnable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+    polarity = "dark";
   };
 
   nix.settings = {
@@ -47,8 +56,7 @@
     nerd-fonts.jetbrains-mono
   ];
 
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
