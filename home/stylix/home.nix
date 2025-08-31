@@ -14,10 +14,12 @@
   imports = [
     ./hyprconf.nix
     ./waybar.nix
+    ./thunar.nix
   ];
 
   home.sessionVariables = {
-    EDITOR = "nvim";
+    EDITOR = "neovim";
+    TERMINAL = "alacritty";
   };
 
   home.packages = with pkgs; [
@@ -32,8 +34,22 @@
     starship
     gh
     wofi
+    hyprpaper
+    lf
+    xfce.thunar
+    xfce.thunar-archive-plugin
+    xfce.thunar-volman
+    file-roller
   ];
 
+  xfconf.settings = {
+    xfce4-helpers = {
+      "/TerminalEmulator" = 
+      { type = "string";
+      value = "alacritty";
+      ;
+    };
+  };
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -48,5 +64,9 @@
       "sudo"
     ];
     theme = "";
+  };
+
+  xdg.mimeApps.defaultApplications = {
+    "inode/directory" = [ "thunar.desktop" ];
   };
 }

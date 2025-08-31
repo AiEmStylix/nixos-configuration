@@ -10,7 +10,7 @@ in
 
   wayland.windowManager.hyprland.settings = {
 
-    monitor = [ ",prefered,auto,1.33333" ];
+    monitor = [ ",prefered,auto,1" ];
 
     exec-once = [ "${terminal}" ];
     bind = [
