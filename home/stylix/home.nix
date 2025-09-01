@@ -12,6 +12,7 @@
   home.stateVersion = "25.05";
 
   imports = [
+    ./git.nix
     ./hyprconf.nix
     ./waybar.nix
     ./thunar.nix
@@ -53,17 +54,6 @@
     enableSshSupport = true;
     enableZshIntegration = true;
     pinentry.package = pkgs.pinentry-tty;
-  };
-
-  programs.git = {
-    enable = true;
-    userName = "Stylix";
-    userEmail = "anhduongfa@gmail.com";
-    signing = {
-      key = "0A906885682539C0";
-      signByDefault = true;
-    };
-    extraConfig.init.defaultBranch = "main";
   };
 
   programs.zsh = {
