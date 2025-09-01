@@ -23,12 +23,12 @@
   };
 
   home.packages = with pkgs; [
+    pinentry-tty
     wl-clipboard
     nixd
     tree-sitter
     vscode
     nixfmt-rfc-style
-    git
     fzf
     ripgrep
     starship
@@ -42,14 +42,30 @@
     file-roller
   ];
 
-  xfconf.settings = {
-    xfce4-helpers = {
-      "/TerminalEmulator" = 
-      { type = "string";
-      value = "alacritty";
-      ;
-    };
+  home.file.".config/nixpkgs/config.nix".text = ''{allowUnfree = true;}'';
+
+  programs.gpg = {
+    enable = true;
   };
+
+  services.gpg-agent = {
+    enable = true;
+    enableSshSupport = true;
+    enableZshIntegration = true;
+    pinentry.package = pkgs.pinentry-tty;
+  };
+
+  programs.git = {
+    enable = true;
+    userName = "Stylix";
+    userEmail = "anhduongfa@gmail.com";
+    signing = {
+      key = "0A906885682539C0";
+      signByDefault = true;
+    };
+    extraConfig.init.defaultBranch = "main";
+  };
+
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;

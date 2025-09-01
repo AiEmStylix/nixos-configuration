@@ -49,7 +49,11 @@
     };
   };
   programs.firefox.enable = true;
+  programs.xfconf.enable = true;
 
+  services.gvfs.enable = true; # Mount, trash, and other functionalities
+  services.tumbler.enable = true;
+  services.udisks2.enable = true;
   # Fonts packages
 
   fonts.packages = with pkgs; [
