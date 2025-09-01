@@ -33,6 +33,16 @@
       fcitx5-gtk # GTK toolkit integration
       fcitx5-bamboo # Bamboo Vietnamese input method
     ];
+    fcitx5.settings.inputMethod = {
+      GroupOrder."0" = "Default";
+      "Groups/0" = {
+        Name = "Default";
+        "Default Layout" = "us";
+        DefaultIM = "bamboo";
+      };
+      "Groups/0/Items/0".Name = "keyboard-us";
+      "Groups/0/Items/1".Name = "bamboo";
+    };
   };
 
 }
