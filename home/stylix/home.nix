@@ -17,6 +17,7 @@
     ./hyprconf.nix
     ./waybar.nix
     ./thunar.nix
+    ./wlogout.nix
   ];
 
   home.sessionVariables = {

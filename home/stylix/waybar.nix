@@ -12,39 +12,99 @@
 
   programs.waybar.settings = {
     mainBar = {
-      layer = "top";
-      position = "top";
-      height = 30;
-      output = [
-        "eDP-1"
-        "HDMI-A-1"
-      ];
       modules-left = [
-        "sway/workspaces"
-        "sway/mode"
-        "wlr/taskbar"
-      ];
-      modules-center = [
-        "sway/window"
-        "custom/hello-from-waybar"
+        "custom/power"
+        "hyprland/workspaces"
       ];
       modules-right = [
-        "mpd"
-        "custom/mymodule#with-css-id"
-        "temperature"
+        "tray"
+        "bluetooth"
+        "network"
+        "battery"
+        "pulseaudio"
+        "clock"
       ];
 
-      "sway/workspaces" = {
+      "custom/power" = {
+        format = "⭘ ";
+        tooltip = false;
+        on-click = "wlogout -b 5";
+      };
+
+      "hyprland/workspaces" = {
         disable-scroll = true;
         all-outputs = true;
+        warp-on-scroll = false;
+        format = "{name}";
+        cursor = true;
       };
-      "custom/hello-from-waybar" = {
-        format = "hello {}";
-        max-length = 40;
-        interval = "once";
-        exec = pkgs.writeShellScript "hello-from-waybar" ''
-          echo "from within waybar"
-        '';
+
+      "tray" = {
+        icon-size = 20;
+        spacing = 10;
+        cursor = true;
+      };
+
+      "bluetooth" = {
+        format = " 󰂯 ";
+        format-disabled = " 󰂲 ";
+        format-connected = " 󰂱 ";
+      };
+
+      "network" = {
+        format-wifi = "  {essid}";
+        format-ethernet = "  Ethernet";
+        format-linked = "  Linked (No IP)";
+        format-disconnected = "  Disconnected";
+        tooltip = false;
+      };
+
+      "battery" = {
+        states = {
+          "good" = 85;
+          "warning" = 30;
+          "critical" = 15;
+        };
+        format = "{icon} {capacity}%";
+        format-full = "{icon} {capacity}%";
+        format-plugged = " {capacity}%";
+        format-charging = " {capacity}%";
+        format-alt = "{icon} {capacity}%";
+        format-icons = [
+          " "
+          " "
+          " "
+          " "
+          " "
+        ];
+        tooltip-format = "{time}";
+        cursor = false;
+      };
+
+      "pulseaudio" = {
+        format = "{icon} {volume}%";
+        format-muted = "  {volume}%";
+        format-bluetooth = " {volume}%";
+        format-bluetooth-muted = "  {volume}%";
+        format-icons = {
+          headphone = " ";
+          headset = " ";
+          default = [ " " ];
+        };
+      };
+
+      "clock" = {
+        format = "{:%a %d/%m/%Y ~ %H:%M}";
+        tooltip-format = "<span size='15000'><tt>{calendar}</tt></span>";
+        calendar = {
+          mode = "month";
+          format = {
+            months = "<span color='#F5C2E7'><b>{}</b></span>";
+            weekdays = "<span color='#89B4FA'><b>{}</b></span>";
+            days = "<span color='#CDD6F4'><b>{}</b></span>";
+            today = "<span color='#F9E2AF'><b>{}</b></span>";
+          };
+        };
       };
     };
   };
