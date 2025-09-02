@@ -57,6 +57,8 @@
     pinentry.package = pkgs.pinentry-tty;
   };
 
+  services.swaync.enable = true;
+
   programs.alacritty = {
     enable = true;
     settings = {
