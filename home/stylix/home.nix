@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   inputs,
   ...
@@ -24,7 +25,7 @@
   };
 
   home.packages = with pkgs; [
-    pinentry-tty
+    gnirehtet
     wl-clipboard
     nixd
     tree-sitter
@@ -56,12 +57,22 @@
     pinentry.package = pkgs.pinentry-tty;
   };
 
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      window.opacity = lib.mkForce 0.5;
+    };
+  };
+
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
   };
 
-  programs.starship.enable = true;
+  programs.starship = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   programs.zsh.oh-my-zsh = {
     enable = true;
@@ -69,7 +80,6 @@
       "git"
       "sudo"
     ];
-    theme = "";
   };
 
   xdg.mimeApps.defaultApplications = {

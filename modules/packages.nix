@@ -14,7 +14,6 @@
     wget
     curl
     neovim
-    alacritty
     sbctl
     niv
     home-manager
