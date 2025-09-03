@@ -20,6 +20,7 @@
     ./wlogout.nix
     ./rofi.nix
     ./swaync.nix
+    ./hyprpaper.nix
   ];
 
   home.sessionVariables = {
@@ -39,7 +40,6 @@
     starship
     gh
     wofi
-    hyprpaper
     lf
     xfce.thunar
     xfce.thunar-archive-plugin
@@ -59,7 +59,6 @@
     enableZshIntegration = true;
     pinentry.package = pkgs.pinentry-tty;
   };
-
   services.swaync.enable = true;
 
   programs.alacritty = {
