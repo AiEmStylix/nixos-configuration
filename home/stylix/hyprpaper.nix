@@ -1,7 +1,7 @@
 { config, ... }:
 
 let
-  wallpaper = "${config.home.homeDirectory}/Pictures/Wallpaper/1.jpg}";
+  wallpaper = builtins.toString ./Wallpaper/1.jpg;
 in
 {
   services.hyprpaper = {
