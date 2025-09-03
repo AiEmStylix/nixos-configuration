@@ -18,6 +18,7 @@
     ./waybar.nix
     ./thunar.nix
     ./wlogout.nix
+    ./rofi.nix
     ./swaync.nix
   ];
 
