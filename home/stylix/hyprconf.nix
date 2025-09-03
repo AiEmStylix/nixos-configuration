@@ -13,6 +13,9 @@ in
     monitor = [ ",prefered,auto,1" ];
 
     exec-once = [ "${terminal}" ];
+    input = {
+      touchpad.natural_scroll = true;
+    };
     bind = [
       "${mod}, Q, exec, ${terminal}"
       "${mod}, F, exec, firefox"

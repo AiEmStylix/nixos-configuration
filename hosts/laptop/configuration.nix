@@ -49,6 +49,8 @@
       wayland = true;
     };
   };
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
   programs.firefox.enable = true;
   programs.xfconf.enable = true;
 
