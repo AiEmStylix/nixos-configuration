@@ -21,6 +21,8 @@
     ./rofi.nix
     ./swaync.nix
     ./hyprpaper.nix
+    ./hyprcursor.nix
+    ./obsidian.nix
   ];
 
   home.sessionVariables = {
@@ -29,6 +31,7 @@
   };
 
   home.packages = with pkgs; [
+    vesktop
     gnirehtet
     wl-clipboard
     nixd
