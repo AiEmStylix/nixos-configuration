@@ -1,13 +1,12 @@
+{ pkgs, ... }:
 {
-  lib,
-  pkgs,
-  ...
-}:
-{
-  home.pointerCursor.hyprcursor = {
-    enable = true;
-    name = "Vanilla-DMZ";
-    size = 32;
-  };
+  home.pointerCursor = {
+    package = pkgs.catppuccin-cursors.mochaDark;
+    name = "mochaLight";
+    gtk.enable = true;
 
+    hyprcursor = {
+      enable = true;
+    };
+  };
 }
