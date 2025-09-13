@@ -18,6 +18,11 @@
       url = "github:nix-community/stylix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

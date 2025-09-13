@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   wallpaper = builtins.toString ./Wallpaper/1.jpg;

@@ -16,7 +16,10 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users.stylix = {
-      imports = [ ../../home/stylix/home.nix ];
+      imports = [
+        ../../home/stylix/home.nix
+
+      ];
     };
     useGlobalPkgs = true;
     backupFileExtension = "backup";

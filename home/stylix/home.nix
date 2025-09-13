@@ -22,7 +22,7 @@
     ./swaync.nix
     ./hyprpaper.nix
     ./hyprcursor.nix
-    ./obsidian.nix
+    ./walker.nix
   ];
 
   home.sessionVariables = {
@@ -31,6 +31,8 @@
   };
 
   home.packages = with pkgs; [
+    sdl3
+    gcc
     vesktop
     gnirehtet
     wl-clipboard
