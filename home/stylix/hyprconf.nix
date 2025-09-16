@@ -10,7 +10,8 @@ in
 
   wayland.windowManager.hyprland.settings = {
 
-    monitor = [ ",prefered,auto,1" ];
+    monitor = [ ",prefered,auto,1" ]
+    ;
 
     exec-once = [ "${terminal}" ];
     input = {
@@ -28,6 +29,9 @@ in
       "${mod}, L, movefocus, r"
       "${mod}, K, movefocus, u"
       "${mod}, J, movefocus, d"
+
+      # Cycle between tab
+      "ALT, tab, cyclenext"
     ]
     ++ (builtins.concatLists (
       builtins.genList (

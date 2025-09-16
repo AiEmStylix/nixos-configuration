@@ -22,7 +22,6 @@
     ./swaync.nix
     ./hyprpaper.nix
     ./hyprcursor.nix
-    ./walker.nix
   ];
 
   home.sessionVariables = {
@@ -31,8 +30,8 @@
   };
 
   home.packages = with pkgs; [
-    sdl3
-    gcc
+    zip
+    android-tools
     vesktop
     gnirehtet
     wl-clipboard
@@ -52,6 +51,7 @@
     file-roller
   ];
 
+  # Allow unfree in nixpkgs
   home.file.".config/nixpkgs/config.nix".text = ''{allowUnfree = true;}'';
 
   programs.gpg = {
@@ -64,6 +64,7 @@
     enableZshIntegration = true;
     pinentry.package = pkgs.pinentry-tty;
   };
+
   services.swaync.enable = true;
 
   programs.alacritty = {
@@ -76,6 +77,12 @@
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
+  };
+
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
   };
 
   programs.starship = {

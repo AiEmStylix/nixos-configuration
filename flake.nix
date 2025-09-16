@@ -49,9 +49,15 @@
           modules = [
             ./hosts/laptop/configuration.nix
             ./hosts/laptop/hardware-configuration.nix
-
+            home-manager.nixosModules.home-manager
           ];
         };
+      };
+
+      homeConfigurations.stylix = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = { inherit inputs; };
+        modules = [ ./home/stylix/home.nix ];
       };
     };
 }
