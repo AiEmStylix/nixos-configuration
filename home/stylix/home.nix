@@ -14,6 +14,7 @@
 
   imports = [
     ./git.nix
+    ./database.nix
     ./hyprconf.nix
     ./waybar.nix
     ./thunar.nix
@@ -30,6 +31,8 @@
   };
 
   home.packages = with pkgs; [
+    telegram-desktop
+    insomnia
     zip
     android-tools
     vesktop
