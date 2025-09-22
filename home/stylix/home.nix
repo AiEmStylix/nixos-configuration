@@ -14,7 +14,6 @@
 
   imports = [
     ./git.nix
-    ./database.nix
     ./hyprconf.nix
     ./waybar.nix
     ./thunar.nix
@@ -23,6 +22,7 @@
     ./swaync.nix
     ./hyprpaper.nix
     ./hyprcursor.nix
+    ./walker.nix
   ];
 
   home.sessionVariables = {
@@ -31,6 +31,7 @@
   };
 
   home.packages = with pkgs; [
+    obs-studio
     telegram-desktop
     insomnia
     zip
@@ -61,6 +62,10 @@
     enable = true;
   };
 
+  programs.hyprshot = {
+    enable = true;
+  };
+
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
@@ -70,12 +75,16 @@
 
   services.swaync.enable = true;
 
+  services.swayosd.enable = true;
+
   programs.alacritty = {
     enable = true;
     settings = {
       window.opacity = lib.mkForce 0.5;
     };
   };
+
+  programs.lazysql.enable = true;
 
   programs.zsh = {
     enable = true;

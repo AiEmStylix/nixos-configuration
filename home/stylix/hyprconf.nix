@@ -2,7 +2,7 @@
 
 let
   terminal = "alacritty";
-  menu = "wofi --show drun";
+  menu = "walker";
   mod = "SUPER";
 in
 {
@@ -10,8 +10,7 @@ in
 
   wayland.windowManager.hyprland.settings = {
 
-    monitor = [ ",prefered,auto,1" ]
-    ;
+    monitor = [ ",prefered,auto,1" ];
 
     exec-once = [ "${terminal}" ];
     input = {
@@ -23,6 +22,7 @@ in
       "${mod}, C, killactive"
       "${mod}, M, exit"
       "${mod}, R, exec, ${menu}"
+      "${mod}, ., exec, ${menu} -m symbols"
 
       # Move focus with mod + hjkl (vim keys)
       "${mod}, H, movefocus, l"
@@ -32,6 +32,14 @@ in
 
       # Cycle between tab
       "ALT, tab, cyclenext"
+
+      # Screenshot
+      "${mod}, PRINT, exec, hyprshot -m window"
+      ", PRINT, exec, hyprshot -m output"
+      "SHIFT|${mod},PRINT, exec, hyprshot -m region"
+
+      # CapsLock indicator
+
     ]
     ++ (builtins.concatLists (
       builtins.genList (
@@ -51,13 +59,27 @@ in
       "${mod}, mouse:273, resizewindow"
     ];
 
+    bindr = [
+    ];
+
     bindel = [
-      ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
-      ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-      ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-      ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-      ",XF86MonBrightnessUp, exec, brightnessctl -e4 -n2 set 5%+"
-      ",XF86MonBrightnessDown, exec, brightnessctl -e4 -n2 set 5%-"
+      # --- Volume ---
+      # Raise volume (5%)
+      ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+ && swayosd-client --output-volume raise"
+      # Lower volume (5%)
+      ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && swayosd-client --output-volume lower"
+      # Toggle mute
+      ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && swayosd-client --output-volume mute-toggle"
+      # Toggle mic mute
+      ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && swayosd-client --input-volume mute-toggle"
+
+      # --- Brightness ---
+      # Raise brightness (5%)
+      ",XF86MonBrightnessUp, exec, brightnessctl set 5%+ && swayosd-client --brightness raise"
+      # Lower brightness (5%)
+      ",XF86MonBrightnessDown, exec, brightnessctl set 5%- && swayosd-client --brightness lower"
+      ",CAPS_LOCK, exec, swayosd-client --caps-lock-led input0::capslock"
+
     ];
 
     general = {
