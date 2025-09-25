@@ -73,7 +73,16 @@
     nerd-fonts.jetbrains-mono
   ];
 
+  security.pam.services.hyprlock = { };
+
   services.openssh.enable = true;
+
+  # Mariadb
+
+  services.mysql = {
+    enable = true;
+    package = pkgs.mariadb;
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

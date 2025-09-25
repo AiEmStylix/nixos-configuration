@@ -31,6 +31,7 @@
   };
 
   home.packages = with pkgs; [
+    qimgv
     obs-studio
     telegram-desktop
     insomnia
@@ -76,6 +77,8 @@
   services.swaync.enable = true;
 
   services.swayosd.enable = true;
+
+  programs.hyprlock.enable = true;
 
   programs.alacritty = {
     enable = true;
