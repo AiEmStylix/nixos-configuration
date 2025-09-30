@@ -31,6 +31,8 @@
   };
 
   home.packages = with pkgs; [
+    dbeaver-bin
+    inkscape
     qimgv
     obs-studio
     telegram-desktop
