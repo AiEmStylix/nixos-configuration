@@ -13,6 +13,7 @@
   home.stateVersion = "25.05";
 
   imports = [
+    ./default.nix
     ./git.nix
     ./hyprconf.nix
     ./waybar.nix
@@ -31,6 +32,7 @@
   };
 
   home.packages = with pkgs; [
+    spotify
     dbeaver-bin
     inkscape
     qimgv
