@@ -34,7 +34,6 @@
 
   home.packages = with pkgs; [
     obsidian
-    gcc
     spotify
     dbeaver-bin
     inkscape
