@@ -24,6 +24,7 @@
     ./hyprpaper.nix
     ./hyprcursor.nix
     ./walker.nix
+    ./coding.nix
   ];
 
   home.sessionVariables = {
@@ -32,6 +33,8 @@
   };
 
   home.packages = with pkgs; [
+    obsidian
+    gcc
     spotify
     dbeaver-bin
     inkscape
