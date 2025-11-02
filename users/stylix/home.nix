@@ -18,9 +18,11 @@
         fzf # Fuzzy finder
         
         # Misc
+        btop
         tree
         file
         scrcpy
+        gnirehtet
         android-tools
     ];
 
