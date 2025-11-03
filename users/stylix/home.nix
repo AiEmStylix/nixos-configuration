@@ -16,6 +16,8 @@
     home.packages = with pkgs; [
         fastfetch
         fzf # Fuzzy finder
+        curl
+        vesktop
         
         # Misc
         btop

@@ -95,7 +95,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     #  thunderbird
-	    curl
 	    vesktop
     ];
   };
