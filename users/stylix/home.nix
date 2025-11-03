@@ -13,6 +13,7 @@
         ../../home/gpg
         ../../home/git
         ../../home/neovim
+	../../home/fuzzel
     ];
     home.packages = with pkgs; [
         fastfetch

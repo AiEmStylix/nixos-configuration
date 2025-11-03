@@ -1,3 +1,4 @@
+{config, pkgs, ...}:
 {
     programs.neovim = {
         enable = true;
@@ -7,7 +8,7 @@
         plugins = with pkgs.vimPlugins; [
             nvim-treesitter.withAllGrammars
         ];
-        extraPackages = [
+        extraPackages = with pkgs; [
             lua-language-server
             vue-language-server
             nil

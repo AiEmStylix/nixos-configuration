@@ -8,15 +8,17 @@
         url = "github:nix-community/home-manager";
         inputs.nixpkgs.follows = "nixpkgs";
     };
+    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager,... }: {
+  outputs = inputs@{ self, nixpkgs, spicetify-nix, home-manager,... }: {
     
     nixosConfigurations = {
         laptop = nixpkgs.lib.nixosSystem {
             specialArgs = {inherit inputs;};
             modules = [
                 ./hosts/laptop
+		spicetify-nix.nixosModules.spicetify
 
                 home-manager.nixosModules.home-manager 
                 {

@@ -17,6 +17,10 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
+  programs.spicetify = {
+    enable = true;
+  };
+
   networking.hostName = "laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -30,6 +34,8 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+  programs.niri.enable = true;
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -134,10 +140,10 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedTCPPorts = [ 53 67 68 80 443 ];
+  networking.firewall.allowedUDPPorts = [ 53 67 68 5353 ];
   # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.firewall.enable = true;
 
   programs.neovim = {
     enable = true;
