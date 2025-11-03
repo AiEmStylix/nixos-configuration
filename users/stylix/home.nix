@@ -12,6 +12,7 @@
         ../../home/starship
         ../../home/gpg
         ../../home/git
+        ../../home/neovim
     ];
     home.packages = with pkgs; [
         fastfetch

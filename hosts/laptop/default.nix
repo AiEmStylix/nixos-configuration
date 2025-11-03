@@ -112,11 +112,12 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   environment.systemPackages = with pkgs; [
    wget
    curl
    git
+   gnomeExtensions.appindicator
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
