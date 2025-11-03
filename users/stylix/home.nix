@@ -15,6 +15,12 @@
         ../../home/neovim
 	../../home/fuzzel
     ];
+
+    # Config dotfiles
+    home.file = {
+    ".config/niri".source = ../../home/niri;
+    };
+
     home.packages = with pkgs; [
         fastfetch
         fzf # Fuzzy finder
