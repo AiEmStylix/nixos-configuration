@@ -1,12 +1,12 @@
-{config, pkgs, ...}:
+{ config, pkgs, ... }:
 {
-    services.gpg-agent = {
-        enable = true;
-        pinentry.package = pkgs.pinentry-gnome3;
-    };
+  services.gpg-agent = {
+    enable = true;
+    pinentry.package = pkgs.pinentry-gnome3;
+  };
 
-    programs.gpg = {
-        enable = true;
-        mutableKeys = true;
-    };
+  programs.gpg = {
+    enable = true;
+    mutableKeys = true;
+  };
 }

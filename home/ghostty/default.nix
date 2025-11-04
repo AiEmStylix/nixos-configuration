@@ -1,7 +1,7 @@
-{config, pkgs, ...}:
+{ config, pkgs, ... }:
 {
-    programs.ghostty = {
-        enable = true;
-        enableZshIntegration = true;
-    };
+  programs.ghostty = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 }

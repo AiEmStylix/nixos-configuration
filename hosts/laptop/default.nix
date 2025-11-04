@@ -5,11 +5,11 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-    
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -29,7 +29,7 @@
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 7d";
-    };
+  };
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -89,7 +89,7 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-    
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -98,14 +98,15 @@
     isNormalUser = true;
     description = "stylix";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
-    #  thunderbird
-	    vesktop
+      #  thunderbird
+      vesktop
     ];
   };
-
-
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -118,12 +119,15 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   environment.systemPackages = with pkgs; [
-   wget
-   curl
-   git
-   gnomeExtensions.appindicator
+    wget
+    curl
+    git
+    gnomeExtensions.appindicator
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -140,20 +144,32 @@
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 53 67 68 80 443 ];
-  networking.firewall.allowedUDPPorts = [ 53 67 68 5353 ];
+  networking.firewall.allowedTCPPorts = [
+    53
+    67
+    68
+    80
+    443
+  ];
+  networking.firewall.allowedUDPPorts = [
+    53
+    67
+    68
+    5353
+  ];
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
 
   programs.neovim = {
     enable = true;
     configure = {
-        customRC = ''
-            set tabstop=4
-            set shiftwidth=4
-            set softtabstop=4
-            set expandtab
-        '';};
+      customRC = ''
+        set tabstop=4
+        set shiftwidth=4
+        set softtabstop=4
+        set expandtab
+      '';
+    };
   };
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

@@ -1,8 +1,8 @@
-{config, pkgs, ...}:
+{ config, pkgs, ... }:
 {
-    programs.zsh = {
-        enable = true;
-        autosuggestion.enable = true;
-        enableCompletion = true;
-    };
+  programs.zsh = {
+    enable = true;
+    autosuggestion.enable = true;
+    enableCompletion = true;
+  };
 }

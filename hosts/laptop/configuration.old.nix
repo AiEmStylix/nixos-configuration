@@ -5,11 +5,11 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-    
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -103,14 +103,17 @@
   users.users.stylix = {
     isNormalUser = true;
     description = "stylix";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
-    #  thunderbird
-	    ghostty
-	    scrcpy
-	    curl
-	    vesktop
-        android-tools
+      #  thunderbird
+      ghostty
+      scrcpy
+      curl
+      vesktop
+      android-tools
     ];
   };
 
@@ -122,11 +125,14 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   environment.systemPackages = with pkgs; [
-   wget
-   curl
-   git
+    wget
+    curl
+    git
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -151,12 +157,13 @@
   programs.neovim = {
     enable = true;
     configure = {
-        customRC = ''
-            set tabstop=4
-            set shiftwidth=4
-            set softtabstop=4
-            set expandtab
-        '';};
+      customRC = ''
+        set tabstop=4
+        set shiftwidth=4
+        set softtabstop=4
+        set expandtab
+      '';
+    };
   };
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
