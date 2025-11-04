@@ -30,6 +30,8 @@
     vesktop
     
     # Misc
+    bluetui
+    brightnessctl
     nixfmt-rfc-style #Nix Formatter
     btop
     tree

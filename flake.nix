@@ -2,10 +2,15 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    stylix = {
+      url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
@@ -15,6 +20,7 @@
     inputs@{
       self,
       nixpkgs,
+      stylix,
       spicetify-nix,
       home-manager,
       ...
@@ -26,6 +32,7 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/laptop
+            stylix.nixosModules.stylix
             spicetify-nix.nixosModules.spicetify
 
             home-manager.nixosModules.home-manager
