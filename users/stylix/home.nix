@@ -23,6 +23,7 @@
   };
 
   home.packages = with pkgs; [
+    vscode
     fastfetch
     fzf # Fuzzy finder
     curl

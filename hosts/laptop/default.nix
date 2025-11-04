@@ -104,7 +104,6 @@
     ];
     packages = with pkgs; [
       #  thunderbird
-      vesktop
     ];
   };
 
