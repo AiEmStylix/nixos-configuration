@@ -30,7 +30,7 @@
     vesktop
     
     # Misc
-    nixfmt #Nix Formatter
+    nixfmt-rfc-style #Nix Formatter
     btop
     tree
     file
