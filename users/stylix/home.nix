@@ -28,8 +28,9 @@
     fzf # Fuzzy finder
     curl
     vesktop
-
+    
     # Misc
+    nixfmt #Nix Formatter
     btop
     tree
     file
