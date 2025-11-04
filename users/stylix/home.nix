@@ -14,6 +14,7 @@
         ../../home/git
         ../../home/neovim
 	../../home/fuzzel
+	../../home/waybar
     ];
 
     # Config dotfiles
