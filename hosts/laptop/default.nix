@@ -20,6 +20,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Enable libvirt
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
@@ -107,6 +111,8 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "libvirtd"
+      "qemu-libvirtd"
     ];
     packages = with pkgs; [
       #  thunderbird

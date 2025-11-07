@@ -25,12 +25,45 @@
           calendar = {
             mode = "month";
             format = {
-              months = "<span><b>{}</b></span>";
-              weekdays = "<span><b>{}</b></span>";
-              days = "<span><b>{}</b></span>";
-              today = "<span><b>{}</b></span>";
+              months = "<span color='#ca9ee6'><b>{}</b></span>";
+              weekdays = "<span color='#babbf1'><b>{}</b></span>";
+              days = "<span color='#c6d0f5'><b>{}</b></span>";
+              today = "<span color='#babbf1'><b>{}</b></span>";
             };
           };
+        };
+
+        "tray" = {
+          icon-size = 12;
+          spacing = 10;
+        };
+
+        "battery" = {
+          states = {
+            "good" = 85;
+            "warning" = 30;
+            "critical" = 15;
+          };
+          format = "{icon} {capacity}%";
+          format-full = "{capacity}% {icon}";
+          format-plugged = " {capacity}%";
+          format-charging = " {capacity}%";
+          format-alt = "{icon} {capacity}%";
+          format-icons = [
+            "󰂎"
+            "󰁺"
+            "󰁻"
+            "󰁼"
+            "󰁽"
+            "󰁾"
+            "󰁿"
+            "󰂀"
+            "󰂁"
+            "󰂂"
+            "󰁹"
+          ];
+          tooltip-format = "{time}";
+          cursor = false;
         };
       };
     };
