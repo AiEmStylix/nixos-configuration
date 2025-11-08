@@ -31,6 +31,7 @@
     fzf # Fuzzy finder
     curl
     vesktop
+    chromium
     
     # Misc
     qemu # Virtual machine
@@ -45,11 +46,24 @@
     android-tools
     gcc #C compiler
     cargo
+    xwayland-satellite
+
+    #IDE
+    jetbrains.phpstorm
+    (php.buildEnv {
+      extensions = ({enabled, all}: enabled ++ (with all; [
+        xdebug
+      ]));
+      extraConfig = ''
+        xdebug.mode=debug
+      '';
+    })
 
     #LSP and formatter
     lua-language-server
     rust-analyzer
     rustfmt
+    phpactor
   ];
     
   programs.noctalia-shell = {
