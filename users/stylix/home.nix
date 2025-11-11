@@ -50,6 +50,7 @@
 
     #IDE
     jetbrains.phpstorm
+    jetbrains.rust-rover
     (php.buildEnv {
       extensions = ({enabled, all}: enabled ++ (with all; [
         xdebug
@@ -68,7 +69,13 @@
     
   programs.noctalia-shell = {
     enable = true;
-    };
-  
+  };
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+  };
   home.stateVersion = "25.05";
 }

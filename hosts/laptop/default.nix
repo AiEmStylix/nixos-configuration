@@ -68,6 +68,10 @@
     LC_TIME = "vi_VN";
   };
 
+  fonts.packages =  with pkgs; [
+    noto-fonts
+  ];
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
