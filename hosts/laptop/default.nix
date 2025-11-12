@@ -202,6 +202,20 @@
       '';
     };
   };
+
+  services.postgresql = {
+    settings = {
+      listen_addresses = "*";  
+    };
+    enable = true;
+    enableTCPIP = true;
+    authentication = pkgs.lib.mkOverride 10 ''
+local all       all     trust
+host all all      ::1/128      trust
+host all postgres 127.0.0.1/32 trust
+host stylix stylix 127.0.0.1/32 trust
+    '';
+  };
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
