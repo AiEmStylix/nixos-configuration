@@ -47,6 +47,10 @@
     gcc #C compiler
     cargo
     xwayland-satellite
+    libreoffice
+    android-tools
+    jdk
+    nodejs
 
     #IDE
     jetbrains.phpstorm

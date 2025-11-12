@@ -30,6 +30,21 @@
   programs.spicetify = {
     enable = true;
   };
+  
+  virtualisation.docker = {
+  # Consider disabling the system wide Docker daemon
+  enable = false;
+
+  rootless = {
+    enable = true;
+    setSocketVariable = true;
+    # Optionally customize rootless Docker daemon settings
+    daemon.settings = {
+      dns = [ "1.1.1.1" "8.8.8.8" ];
+      registry-mirrors = [ "https://mirror.gcr.io" ];
+    };
+  };
+};
 
   networking.hostName = "laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -70,6 +85,7 @@
 
   fonts.packages =  with pkgs; [
     noto-fonts
+    noto-fonts-cjk-sans
   ];
 
   # Enable the X11 windowing system.
