@@ -35,7 +35,7 @@
     
     # Misc
     qemu # Virtual machine
-    bluetui
+    lazygit
     brightnessctl
     nixfmt-rfc-style #Nix Formatter
     btop
