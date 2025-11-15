@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports = [
@@ -26,24 +26,22 @@
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  programs.spicetify = {
-    enable = true;
-  };
   
+  programs.spicetify = let
+    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
+  in {
+    enable = true;
+    enabledExtensions = with spicePkgs.extensions; [
+      adblock
+      hidePodcasts
+      shuffle
+    ];
+  };
+
   virtualisation.docker = {
   # Consider disabling the system wide Docker daemon
-  enable = false;
+  enable = true;
 
-  rootless = {
-    enable = true;
-    setSocketVariable = true;
-    # Optionally customize rootless Docker daemon settings
-    daemon.settings = {
-      dns = [ "1.1.1.1" "8.8.8.8" ];
-      registry-mirrors = [ "https://mirror.gcr.io" ];
-    };
-  };
 };
 
   networking.hostName = "laptop"; # Define your hostname.
@@ -133,6 +131,7 @@
       "wheel"
       "libvirtd"
       "qemu-libvirtd"
+      "docker"
     ];
     packages = with pkgs; [
       #  thunderbird
@@ -212,6 +211,7 @@
     authentication = pkgs.lib.mkOverride 10 ''
 local all       all     trust
 host all all      ::1/128      trust
+host all all 127.0.0.1/32 trust
 host all postgres 127.0.0.1/32 trust
 host stylix stylix 127.0.0.1/32 trust
     '';
