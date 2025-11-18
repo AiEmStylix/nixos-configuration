@@ -55,6 +55,7 @@
     #IDE
     jetbrains.phpstorm
     jetbrains.rust-rover
+    jetbrains.datagrip
     (php.buildEnv {
       extensions = ({enabled, all}: enabled ++ (with all; [
         xdebug
@@ -69,6 +70,8 @@
     rust-analyzer
     rustfmt
     phpactor
+
+    #Api client
     postman
     yaak
   ];
