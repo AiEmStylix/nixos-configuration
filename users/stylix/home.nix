@@ -69,6 +69,8 @@
     rust-analyzer
     rustfmt
     phpactor
+    postman
+    yaak
   ];
     
   programs.noctalia-shell = {
