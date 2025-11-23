@@ -31,6 +31,7 @@
     fzf # Fuzzy finder
     curl
     vesktop
+    telegram-desktop
     chromium
     
     # Misc
@@ -51,6 +52,9 @@
     android-tools
     jdk
     nodejs
+    teamviewer
+    gemini-cli
+    pnpm
 
     #IDE
     jetbrains.phpstorm

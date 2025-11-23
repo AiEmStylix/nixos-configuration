@@ -21,7 +21,10 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Enable libvirt
-  virtualisation.libvirtd.enable = true;
+  virtualisation = {
+    libvirtd.enable = true;
+    podman.enable = true;
+  };
   programs.virt-manager.enable = true;
 
   # Use latest kernel.
@@ -158,6 +161,7 @@
     curl
     git
     gnomeExtensions.appindicator
+    distrobox
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -189,6 +193,10 @@
   ];
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
+
+  services.geoclue2 = {
+    enable = true;
+  };
 
   programs.neovim = {
     enable = true;
