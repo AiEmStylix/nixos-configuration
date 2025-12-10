@@ -34,7 +34,7 @@
     vesktop
     telegram-desktop
     chromium
-    
+        
     # Misc
     qemu # Virtual machine
     lazygit
@@ -56,6 +56,7 @@
     teamviewer
     gemini-cli
     pnpm
+    zed-editor
 
     #IDE
     jetbrains.datagrip
