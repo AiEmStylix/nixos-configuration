@@ -26,6 +26,7 @@
   stylix.targets.neovim.enable = false;
 
   home.packages = with pkgs; [
+    parsec-bin
     vscode
     fastfetch
     fzf # Fuzzy finder
@@ -57,8 +58,6 @@
     pnpm
 
     #IDE
-    jetbrains.phpstorm
-    jetbrains.rust-rover
     jetbrains.datagrip
     (php.buildEnv {
       extensions = ({enabled, all}: enabled ++ (with all; [

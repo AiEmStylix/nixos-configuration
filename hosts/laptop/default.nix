@@ -89,6 +89,17 @@
     noto-fonts-cjk-sans
   ];
 
+  # Enable nix-ld to run unpatched dynamic binaries
+  programs.nix-ld.enable = true;
+
+  # Sets up libraries that standard binaries commonly need
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc.lib  # Required for libstdc++
+    zlib              # Common compression lib
+    openssl           # Common crypto lib
+    icu               # Often needed by PHP/Dotnet tools
+  ]; 
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -139,6 +150,9 @@
     packages = with pkgs; [
       #  thunderbird
     ];
+
+    openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIpmM8IPyjX2MbLS/k+6jMFEhmc6peKH7a/NF4Emi7Vq standard@PC00000008"];
   };
 
   # Install firefox.
@@ -162,6 +176,8 @@
     git
     gnomeExtensions.appindicator
     distrobox
+    watchman
+    android-studio
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -210,6 +226,12 @@
     };
   };
 
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
+
   services.postgresql = {
     settings = {
       listen_addresses = "*";  
@@ -224,6 +246,15 @@ host all postgres 127.0.0.1/32 trust
 host stylix stylix 127.0.0.1/32 trust
     '';
   };
+
+  services.openssh = {
+  enable = true;
+  settings = {
+    # Để bảo mật, không cho phép đăng nhập bằng tài khoản root
+    PermitRootLogin = "no";
+    # Cho phép đăng nhập bằng mật khẩu (nếu bạn chưa cài SSH Key)
+  };
+};
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
