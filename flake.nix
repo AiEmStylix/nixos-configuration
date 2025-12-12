@@ -9,10 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix = {
-      url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
 
     quickshell = {
@@ -23,18 +19,20 @@
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.quickshell.follows = "quickshell";  # Use same quickshell version
     };
+
+    catppuccin.url = "github:catppuccin/nix";
+
   };
 
   outputs =
     inputs@{
       self,
       nixpkgs,
-      stylix,
       spicetify-nix,
       home-manager,
       noctalia,
+      catppuccin,
       ...
     }:
     {
@@ -44,16 +42,19 @@
           specialArgs = { inherit inputs; };
           modules = [
             ./hosts/laptop
-            stylix.nixosModules.stylix
             spicetify-nix.nixosModules.spicetify
-
+            catppuccin.nixosModules.catppuccin
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.extraSpecialArgs = {inherit inputs;};
 
-              home-manager.users.stylix = import ./users/stylix/home.nix;
+              home-manager.users.stylix = {
+                imports = [
+                  ./users/stylix/home.nix
+                ];
+              };
             }
           ];
         };

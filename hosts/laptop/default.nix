@@ -11,10 +11,6 @@
   ];
 
   # Stylix configuration
-  stylix = {
-    enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-frappe.yaml";
-  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -29,7 +25,7 @@
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  
+
   programs.spicetify = let
     spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
   in {
@@ -106,7 +102,7 @@
     zlib              # Common compression lib
     openssl           # Common crypto lib
     icu               # Often needed by PHP/Dotnet tools
-  ]; 
+  ];
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -242,7 +238,7 @@
 
   services.postgresql = {
     settings = {
-      listen_addresses = "*";  
+      listen_addresses = "*";
     };
     enable = true;
     enableTCPIP = true;

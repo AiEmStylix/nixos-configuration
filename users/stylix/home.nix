@@ -7,6 +7,7 @@
   # Import home-manager module
   imports = [
     inputs.noctalia.homeModules.default # Noctalia shell
+    inputs.catppuccin.homeModules.catppuccin
     ../../home/fcitx5
     ../../home/zsh
     ../../home/ghostty
@@ -23,7 +24,11 @@
     ".config/niri".source = ../../home/niri;
   };
 
-  stylix.targets.neovim.enable = false;
+  catppuccin = {
+    enable = true;
+    fcitx5.enable = false;
+    cursors.enable = true;
+  };
 
   home.packages = with pkgs; [
     parsec-bin
@@ -34,7 +39,7 @@
     vesktop
     telegram-desktop
     chromium
-        
+
     # Misc
     qemu # Virtual machine
     lazygit
@@ -79,7 +84,7 @@
     postman
     yaak
   ];
-    
+
   programs.noctalia-shell = {
     enable = true;
   };
