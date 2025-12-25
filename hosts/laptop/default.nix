@@ -10,7 +10,18 @@
     ./hardware-configuration.nix
   ];
 
-  # Stylix configuration
+  # Nvidia configuration
+  hardware.graphics.enable = true;
+  services.xserver.videoDrivers = [ "nvidia" "modesetting" ];  
+  hardware.nvidia.open = true;  # see the note above
+  hardware.nvidia.prime = {
+    offload.enable = true;
+    offload.enableOffloadCmd = true;
+    
+    #intelBusId = "PCI:0:2:0";
+    nvidiaBusId = "PCI:1:0:0";
+    amdgpuBusId = "PCI:5:0:0"; # If you have an AMD iGPU
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -40,11 +51,15 @@
   virtualisation.docker = {
   # Consider disabling the system wide Docker daemon
   enable = true;
-
 };
+
 
   networking.hostName = "laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  services.udev.extraRules = ''
+  KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="plugdev"
+'';
 
   # Garbage collector
   nix.gc = {

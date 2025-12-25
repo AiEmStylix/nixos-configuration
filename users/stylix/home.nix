@@ -32,6 +32,8 @@
 
   home.packages = with pkgs; [
     parsec-bin
+    usbutils
+    aseprite
     vscode
     fastfetch
     fzf # Fuzzy finder
@@ -62,6 +64,8 @@
     gemini-cli
     pnpm
     zed-editor
+    qimgv
+    rustc
 
     #IDE
     jetbrains.datagrip
