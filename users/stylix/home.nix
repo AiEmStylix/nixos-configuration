@@ -31,6 +31,7 @@
   };
 
   home.packages = with pkgs; [
+    docker-compose
     winboat
     parsec-bin
     libgtop
