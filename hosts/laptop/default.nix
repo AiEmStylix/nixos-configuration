@@ -12,16 +12,18 @@
 
   # Nvidia configuration
   hardware.graphics.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" "modesetting" ];  
+  services.xserver.videoDrivers = [ "nvidia" "modesetting" ];
   hardware.nvidia.open = true;  # see the note above
   hardware.nvidia.prime = {
     offload.enable = true;
     offload.enableOffloadCmd = true;
-    
+
     #intelBusId = "PCI:0:2:0";
     nvidiaBusId = "PCI:1:0:0";
     amdgpuBusId = "PCI:5:0:0"; # If you have an AMD iGPU
   };
+
+   programs.dconf.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -170,8 +172,6 @@
       #  thunderbird
     ];
 
-    openssh.authorizedKeys.keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIpmM8IPyjX2MbLS/k+6jMFEhmc6peKH7a/NF4Emi7Vq standard@PC00000008"];
   };
 
   # Install firefox.

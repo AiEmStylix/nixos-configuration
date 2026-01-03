@@ -31,7 +31,10 @@
   };
 
   home.packages = with pkgs; [
+    winboat
     parsec-bin
+    libgtop
+    hicolor-icon-theme
     usbutils
     aseprite
     vscode

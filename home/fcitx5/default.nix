@@ -8,6 +8,7 @@
       waylandFrontend = true;
       addons = with pkgs; [
         fcitx5-bamboo
+	fcitx5-gtk
       ];
     };
     fcitx5.settings.inputMethod = {
