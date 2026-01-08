@@ -34,6 +34,7 @@
     libvirtd.enable = true;
     podman.enable = true;
   };
+  virtualisation.libvirtd.qemu.vhostUserPackages = [ pkgs.virtiofsd ];
   programs.virt-manager.enable = true;
 
   # Use latest kernel.
