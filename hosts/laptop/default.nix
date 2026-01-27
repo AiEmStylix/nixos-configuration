@@ -2,7 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -10,10 +15,15 @@
     ./hardware-configuration.nix
   ];
 
+  nixpkgs.overlays = [ inputs.polymc.overlay ];
+
   # Nvidia configuration
   hardware.graphics.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" "modesetting" ];
-  hardware.nvidia.open = true;  # see the note above
+  services.xserver.videoDrivers = [
+    "nvidia"
+    "modesetting"
+  ];
+  hardware.nvidia.open = true; # see the note above
   hardware.nvidia.prime = {
     offload.enable = true;
     offload.enableOffloadCmd = true;
@@ -23,7 +33,7 @@
     amdgpuBusId = "PCI:5:0:0"; # If you have an AMD iGPU
   };
 
-   programs.dconf.enable = true;
+  programs.dconf.enable = true;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -40,29 +50,30 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  programs.spicetify = let
-    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
-  in {
-    enable = true;
-    enabledExtensions = with spicePkgs.extensions; [
-      adblock
-      hidePodcasts
-      shuffle
-    ];
-  };
+  programs.spicetify =
+    let
+      spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
+    in
+    {
+      enable = true;
+      enabledExtensions = with spicePkgs.extensions; [
+        adblock
+        hidePodcasts
+        shuffle
+      ];
+    };
 
   virtualisation.docker = {
-  # Consider disabling the system wide Docker daemon
-  enable = true;
-};
-
+    # Consider disabling the system wide Docker daemon
+    enable = true;
+  };
 
   networking.hostName = "laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   services.udev.extraRules = ''
-  KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="plugdev"
-'';
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="plugdev"
+  '';
 
   # Garbage collector
   nix.gc = {
@@ -76,11 +87,12 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   programs.tmux = {
-  enable = true;
-  clock24 = true;
-  extraConfig = '' # used for less common options, intelligently combines if defined in multiple places.
-    ...
-  '';
+    enable = true;
+    clock24 = true;
+    extraConfig = ''
+      # used for less common options, intelligently combines if defined in multiple places.
+         ...
+    '';
   };
 
   programs.niri.enable = true;
@@ -106,7 +118,7 @@
     LC_TIME = "vi_VN";
   };
 
-  fonts.packages =  with pkgs; [
+  fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
   ];
@@ -116,10 +128,10 @@
 
   # Sets up libraries that standard binaries commonly need
   programs.nix-ld.libraries = with pkgs; [
-    stdenv.cc.cc.lib  # Required for libstdc++
-    zlib              # Common compression lib
-    openssl           # Common crypto lib
-    icu               # Often needed by PHP/Dotnet tools
+    stdenv.cc.cc.lib # Required for libstdc++
+    zlib # Common compression lib
+    openssl # Common crypto lib
+    icu # Often needed by PHP/Dotnet tools
   ];
 
   # Enable the X11 windowing system.
@@ -176,7 +188,10 @@
   };
 
   # Install firefox.
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+    package = pkgs.firefox-devedition;
+  };
 
   # Install Zsh
   programs.zsh.enable = true;
@@ -198,6 +213,7 @@
     distrobox
     watchman
     android-studio
+    polymc
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -256,31 +272,32 @@
     settings = {
       listen_addresses = "*";
     };
+    package = pkgs.postgresql_18;
     enable = true;
     enableTCPIP = true;
     authentication = pkgs.lib.mkOverride 10 ''
-local all       all     trust
-host all all      ::1/128      trust
-host all all 127.0.0.1/32 trust
-host all postgres 127.0.0.1/32 trust
-host stylix stylix 127.0.0.1/32 trust
+      local all       all     trust
+      host all all      ::1/128      trust
+      host all all 127.0.0.1/32 trust
+      host all postgres 127.0.0.1/32 trust
+      host stylix stylix 127.0.0.1/32 trust
     '';
   };
 
   services.openssh = {
-  enable = true;
-  settings = {
-    # Để bảo mật, không cho phép đăng nhập bằng tài khoản root
-    PermitRootLogin = "no";
-    # Cho phép đăng nhập bằng mật khẩu (nếu bạn chưa cài SSH Key)
+    enable = true;
+    settings = {
+      # Để bảo mật, không cho phép đăng nhập bằng tài khoản root
+      PermitRootLogin = "no";
+      # Cho phép đăng nhập bằng mật khẩu (nếu bạn chưa cài SSH Key)
+    };
   };
-};
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "25.05"; # Did you read the comment?
+  system.stateVersion = "25.11"; # Did you read the comment?
 
 }

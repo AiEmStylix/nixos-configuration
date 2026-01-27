@@ -23,6 +23,12 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    polymc.url = "github:PolyMC/PolyMC";
   };
 
   outputs =
@@ -33,6 +39,8 @@
       home-manager,
       noctalia,
       catppuccin,
+      nur,
+      polymc,
       ...
     }:
     {
@@ -44,11 +52,12 @@
             ./hosts/laptop
             spicetify-nix.nixosModules.spicetify
             catppuccin.nixosModules.catppuccin
+            nur.modules.nixos.default
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {inherit inputs;};
+              home-manager.extraSpecialArgs = { inherit inputs; };
 
               home-manager.users.stylix = {
                 imports = [

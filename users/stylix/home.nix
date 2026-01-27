@@ -1,4 +1,9 @@
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   home.username = "stylix";
@@ -50,20 +55,19 @@
     qemu # Virtual machine
     lazygit
     brightnessctl
-    nixfmt-rfc-style #Nix Formatter
+    nixfmt-rfc-style # Nix Formatter
     btop
     tree
     file
     scrcpy
     gnirehtet
     android-tools
-    gcc #C compiler
+    gcc # C compiler
     cargo
     xwayland-satellite
     libreoffice
     android-tools
     jdk
-    nodejs
     teamviewer
     gemini-cli
     pnpm
@@ -74,13 +78,21 @@
     #IDE
     jetbrains.datagrip
     (php.buildEnv {
-      extensions = ({enabled, all}: enabled ++ (with all; [
-        xdebug
-      ]));
+      extensions = (
+        { enabled, all }:
+        enabled
+        ++ (with all; [
+          xdebug
+        ])
+      );
       extraConfig = ''
         xdebug.mode=debug
       '';
     })
+
+    # Video Editor
+    davinci-resolve
+    kdePackages.kdenlive
 
     #LSP and formatter
     lua-language-server
@@ -91,6 +103,13 @@
     #Api client
     postman
     yaak
+
+    # Run Time
+    nodejs
+    bun
+
+    # Nur
+    nur.repos.mic92.hello-nur
   ];
 
   programs.noctalia-shell = {
