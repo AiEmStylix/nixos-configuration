@@ -13,6 +13,7 @@
   imports = [
     inputs.noctalia.homeModules.default # Noctalia shell
     inputs.catppuccin.homeModules.catppuccin
+    ../../home/nh
     ../../home/fcitx5
     ../../home/zsh
     ../../home/ghostty
@@ -77,18 +78,7 @@
 
     #IDE
     jetbrains.datagrip
-    (php.buildEnv {
-      extensions = (
-        { enabled, all }:
-        enabled
-        ++ (with all; [
-          xdebug
-        ])
-      );
-      extraConfig = ''
-        xdebug.mode=debug
-      '';
-    })
+    dbeaver-bin
 
     # Video Editor
     davinci-resolve

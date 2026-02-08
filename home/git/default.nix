@@ -7,6 +7,7 @@
         email = "anhduongfa@gmail.com";
       };
       init.defaultBranch = "main";
+      core.editor = "nvim";
     };
     signing = {
       key = "0A906885682539C0";
