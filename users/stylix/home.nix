@@ -98,8 +98,7 @@
     nodejs
     bun
 
-    # Nur
-    nur.repos.mic92.hello-nur
+    gimp
   ];
 
   programs.noctalia-shell = {

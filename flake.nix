@@ -29,6 +29,13 @@
     };
 
     polymc.url = "github:PolyMC/PolyMC";
+
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.0.0";
+
+      # Optional but recommended to limit the size of your system closure.
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -41,6 +48,7 @@
       catppuccin,
       nur,
       polymc,
+      lanzaboote,
       ...
     }:
     {
@@ -51,6 +59,8 @@
           modules = [
             ./hosts/laptop
             spicetify-nix.nixosModules.spicetify
+            lanzaboote.nixosModules.lanzaboote
+
             catppuccin.nixosModules.catppuccin
             nur.modules.nixos.default
             home-manager.nixosModules.home-manager
@@ -65,6 +75,7 @@
                 ];
               };
             }
+
           ];
         };
       };
