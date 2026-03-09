@@ -98,7 +98,11 @@
     nodejs
     bun
 
+    obs-studio
     gimp
+    inputs.zen-browser.packages.${pkgs.system}.twilight
+    google-chrome
+    microsoft-edge
   ];
 
   programs.noctalia-shell = {
