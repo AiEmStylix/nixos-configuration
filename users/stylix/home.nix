@@ -39,9 +39,6 @@
   home.packages = with pkgs; [
     docker-compose
     winboat
-    parsec-bin
-    libgtop
-    hicolor-icon-theme
     usbutils
     aseprite
     vscode
@@ -56,7 +53,6 @@
     qemu # Virtual machine
     lazygit
     brightnessctl
-    nixfmt-rfc-style # Nix Formatter
     btop
     tree
     file
@@ -80,6 +76,7 @@
     jetbrains.datagrip
     dbeaver-bin
     jetbrains.clion
+    uv
 
     # Video Editor
     davinci-resolve
@@ -89,7 +86,6 @@
     lua-language-server
     rust-analyzer
     rustfmt
-    phpactor
 
     #Api client
     postman
