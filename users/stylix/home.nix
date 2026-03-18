@@ -79,6 +79,7 @@
     #IDE
     jetbrains.datagrip
     dbeaver-bin
+    jetbrains.clion
 
     # Video Editor
     davinci-resolve
