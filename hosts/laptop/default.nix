@@ -24,14 +24,14 @@
     "nvidia"
     "modesetting"
   ];
-  hardware.nvidia.open = true; # see the note above
+  hardware.nvidia.open = false; # see the note above
   hardware.nvidia.prime = {
     offload.enable = true;
     offload.enableOffloadCmd = true;
 
     #intelBusId = "PCI:0:2:0";
-    nvidiaBusId = "PCI:1:0:0";
-    amdgpuBusId = "PCI:5:0:0"; # If you have an AMD iGPU
+    nvidiaBusId = "PCI:1@0:0:0";
+    amdgpuBusId = "PCI:5@0:0:0"; # If you have an AMD iGPU
   };
 
   programs.dconf.enable = true;
@@ -220,20 +220,38 @@
     watchman
     android-studio
     polymc
+
+    (let base = pkgs.appimageTools.defaultFhsEnvArgs; in
+      pkgs.buildFHSEnv (base // {
+      name = "fhs";
+      targetPkgs = pkgs:
+        # pkgs.buildFHSEnv provides only a minimal FHS environment,
+        # lacking many basic packages needed by most software.
+        # Therefore, we need to add them manually.
+        #
+        # pkgs.appimageTools provides basic packages required by most software.
+        (base.targetPkgs pkgs) ++ (with pkgs; [
+          pkg-config
+          ncurses
+          # Feel free to add more packages here if needed.
+        ]
+      );
+      profile = "export FHS=1";
+      runScript = "bash";
+      extraOutputsToInstall = ["dev"];
+    }))
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.gnupg.agent = {
+     enable = true;
+     enableSSHSupport = true;
+     pinentryPackage = pkgs.pinentry-curses;
+   };
 
   # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [
@@ -282,11 +300,10 @@
     enable = true;
     enableTCPIP = true;
     authentication = pkgs.lib.mkOverride 10 ''
-      local all       all     trust
-      host all all      ::1/128      trust
-      host all all 127.0.0.1/32 trust
-      host all postgres 127.0.0.1/32 trust
-      host stylix stylix 127.0.0.1/32 trust
+      local all       all     scram-sha-256
+      host all all      ::1/128      scram-sha-256
+      host all all 127.0.0.1/32 scram-sha-256
+      host all postgres 127.0.0.1/32 scram-sha-256
     '';
   };
 

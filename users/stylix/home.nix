@@ -74,8 +74,10 @@
 
     #IDE
     jetbrains.datagrip
+    jetbrains.phpstorm
     dbeaver-bin
     jetbrains.clion
+    antigravity
     uv
 
     # Video Editor
@@ -93,6 +95,9 @@
 
     # Run Time
     nodejs
+    php
+    php84Packages.composer
+    laravel
     bun
 
     obs-studio
@@ -100,6 +105,8 @@
     inputs.zen-browser.packages.${pkgs.system}.twilight
     google-chrome
     microsoft-edge
+
+    go
   ];
 
   programs.noctalia-shell = {
