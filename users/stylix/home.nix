@@ -83,6 +83,10 @@
     # Video Editor
     davinci-resolve
     kdePackages.kdenlive
+    
+    # Film hosting
+    vlc
+    qbittorrent
 
     #LSP and formatter
     lua-language-server
