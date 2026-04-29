@@ -21,9 +21,10 @@
     ../../home/starship
     ../../home/gpg
     ../../home/git
-    ../../home/neovim
+    # ../../home/neovim
     ../../home/fuzzel
     ../../home/obsidian
+    ../../home/fzf
   ];
 
   # Config dotfiles
@@ -84,7 +85,7 @@
     # Video Editor
     davinci-resolve
     kdePackages.kdenlive
-    
+
     # Film hosting
     vlc
     qbittorrent
