@@ -13,6 +13,7 @@
   imports = [
     inputs.noctalia.homeModules.default # Noctalia shell
     inputs.catppuccin.homeModules.catppuccin
+    ../../home/nixvim
     ../../home/nh
     ../../home/fcitx5
     ../../home/zsh
@@ -106,9 +107,7 @@
 
     obs-studio
     gimp
-    inputs.zen-browser.packages.${pkgs.system}.twilight
-    google-chrome
-    microsoft-edge
+    localsend
 
     go
   ];

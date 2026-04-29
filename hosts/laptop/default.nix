@@ -16,8 +16,6 @@
     ./hardware-configuration.nix
   ];
 
-  nixpkgs.overlays = [ inputs.polymc.overlay ];
-
   # Nvidia configuration
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [
@@ -219,8 +217,6 @@
     distrobox
     watchman
     android-studio
-    polymc
-
     (let base = pkgs.appimageTools.defaultFhsEnvArgs; in
       pkgs.buildFHSEnv (base // {
       name = "fhs";
@@ -260,12 +256,16 @@
     68
     80
     443
+    53317	
+    22787
   ];
   networking.firewall.allowedUDPPorts = [
     53
     67
     68
     5353
+    53317
+    22787
   ];
   # Or disable the firewall altogether.
   networking.firewall.enable = true;

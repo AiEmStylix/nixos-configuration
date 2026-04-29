@@ -28,8 +28,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    polymc.url = "github:PolyMC/PolyMC";
-
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v1.0.0";
 
@@ -37,12 +35,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
-      };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -55,9 +50,8 @@
       noctalia,
       catppuccin,
       nur,
-      polymc,
       lanzaboote,
-      zen-browser,
+      nixvim,
       ...
     }:
     {
@@ -81,6 +75,7 @@
               home-manager.users.stylix = {
                 imports = [
                   ./users/stylix/home.nix
+                  nixvim.homeModules.nixvim
                 ];
               };
             }
