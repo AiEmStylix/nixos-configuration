@@ -25,6 +25,7 @@
     ../../home/fuzzel
     ../../home/obsidian
     ../../home/fzf
+    ../../home/ripgrep
   ];
 
   # Config dotfiles
@@ -45,7 +46,6 @@
     aseprite
     vscode
     fastfetch
-    fzf # Fuzzy finder
     curl
     vesktop
     telegram-desktop
