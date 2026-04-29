@@ -52,6 +52,10 @@
       };
     };
 
+    plugins.render-markdown = {
+      enable = true;
+    };
+
     extraPackages = with pkgs; [
       nixfmt
       gotools # Chứa goimports
