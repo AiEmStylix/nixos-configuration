@@ -14,6 +14,7 @@
     inputs.noctalia.homeModules.default # Noctalia shell
     inputs.catppuccin.homeModules.catppuccin
     ../../home/nixvim
+    ../../home/zathura
     ../../home/nh
     ../../home/fcitx5
     ../../home/zsh

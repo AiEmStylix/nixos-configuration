@@ -8,7 +8,7 @@
     globals.mapleader = " ";
     opts = {
       tabstop = 4;
-      shiftwidth = 4;
+      shiftwidth = 2;
       expandtab = true;
       softtabstop = 4;
       autoindent = true;
@@ -50,6 +50,10 @@
           cpp = [ "clang-format" ];
         };
       };
+    };
+
+    plugins.blink-cmp = {
+      enable = true;
     };
 
     plugins.render-markdown = {
