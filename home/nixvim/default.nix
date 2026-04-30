@@ -4,6 +4,7 @@
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
+    viAlias = true;
 
     globals.mapleader = " ";
     opts = {
@@ -26,6 +27,9 @@
         default_file_explorer = true;
         delete_to_trash = true;
         skip_confirm_for_simple_edits = true;
+        view_options = {
+          show_hidden = true;
+        };
       };
     };
 
@@ -36,7 +40,7 @@
           lsp_fallback = true;
           timeout_ms = 1000;
         };
-        # Định nghĩa formatter cho từng loại ngôn ngữ
+        # Formatter cho each language
         formatters_by_ft = {
           nix = [ "nixfmt" ];
           go = [
@@ -52,9 +56,17 @@
       };
     };
 
+    # LSP Server for code completion
+    plugins.lsp = {
+      enable = true;
+      servers.gopls.enable = true;
+    };
+
     plugins.blink-cmp = {
       enable = true;
     };
+
+    plugins.fidget.enable = true;
 
     plugins.render-markdown = {
       enable = true;
