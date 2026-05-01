@@ -18,6 +18,7 @@
     ../../home/nh
     ../../home/fcitx5
     ../../home/zsh
+    ../../home/nushell
     ../../home/ghostty
     ../../home/starship
     ../../home/gpg

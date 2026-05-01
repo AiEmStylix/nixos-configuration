@@ -62,6 +62,9 @@
       servers.gopls.enable = true;
     };
 
+    plugins.tree-sitter.enable = true;
+    plugins.nvim-autopairs.enable = true;
+
     plugins.blink-cmp = {
       enable = true;
     };
