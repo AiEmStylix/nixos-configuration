@@ -79,7 +79,7 @@
       nixfmt
       gotools # Chứa goimports
       gofumpt # Formatter chuẩn và chặt chẽ của Go
-      nodePackages.prettier
+      prettier
       rustfmt
       clang-tools # Chứa clang-format cho C++
     ];
