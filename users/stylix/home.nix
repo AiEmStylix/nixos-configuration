@@ -79,8 +79,6 @@
 
     #IDE
     jetbrains.datagrip
-    jetbrains.phpstorm
-    jetbrains.goland
     dbeaver-bin
     jetbrains.clion
     antigravity
