@@ -28,6 +28,7 @@
     ../../home/obsidian
     ../../home/fzf
     ../../home/ripgrep
+    ../../home/brave
   ];
 
   # Config dotfiles
