@@ -51,7 +51,6 @@
       catppuccin,
       nur,
       lanzaboote,
-      nixvim,
       ...
     }:
     {
