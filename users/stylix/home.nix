@@ -113,7 +113,6 @@
     localsend
 
     go
-    zig
   ];
 
   programs.noctalia-shell = {
