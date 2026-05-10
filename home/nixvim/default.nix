@@ -60,6 +60,7 @@
     plugins.lsp = {
       enable = true;
       servers.gopls.enable = true;
+      servers.zls.enable = true;
     };
 
     plugins.tree-sitter.enable = true;

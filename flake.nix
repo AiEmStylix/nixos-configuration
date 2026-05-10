@@ -50,6 +50,7 @@
       noctalia,
       catppuccin,
       nur,
+      nixvim,
       lanzaboote,
       ...
     }:
