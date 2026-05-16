@@ -217,35 +217,43 @@
     distrobox
     watchman
     android-studio
-    (let base = pkgs.appimageTools.defaultFhsEnvArgs; in
-      pkgs.buildFHSEnv (base // {
-      name = "fhs";
-      targetPkgs = pkgs:
-        # pkgs.buildFHSEnv provides only a minimal FHS environment,
-        # lacking many basic packages needed by most software.
-        # Therefore, we need to add them manually.
-        #
-        # pkgs.appimageTools provides basic packages required by most software.
-        (base.targetPkgs pkgs) ++ (with pkgs; [
-          pkg-config
-          ncurses
-          # Feel free to add more packages here if needed.
-        ]
-      );
-      profile = "export FHS=1";
-      runScript = "bash";
-      extraOutputsToInstall = ["dev"];
-    }))
+    (
+      let
+        base = pkgs.appimageTools.defaultFhsEnvArgs;
+      in
+      pkgs.buildFHSEnv (
+        base
+        // {
+          name = "fhs";
+          targetPkgs =
+            pkgs:
+            # pkgs.buildFHSEnv provides only a minimal FHS environment,
+            # lacking many basic packages needed by most software.
+            # Therefore, we need to add them manually.
+            #
+            # pkgs.appimageTools provides basic packages required by most software.
+            (base.targetPkgs pkgs)
+            ++ (with pkgs; [
+              pkg-config
+              ncurses
+              # Feel free to add more packages here if needed.
+            ]);
+          profile = "export FHS=1";
+          runScript = "bash";
+          extraOutputsToInstall = [ "dev" ];
+        }
+      )
+    )
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
   programs.gnupg.agent = {
-     enable = true;
-     enableSSHSupport = true;
-     pinentryPackage = pkgs.pinentry-curses;
-   };
+    enable = true;
+    enableSSHSupport = true;
+    pinentryPackage = pkgs.pinentry-curses;
+  };
 
   # List services that you want to enable:
 
@@ -256,8 +264,9 @@
     68
     80
     443
-    53317	
+    53317
     22787
+    5173
   ];
   networking.firewall.allowedUDPPorts = [
     53
@@ -266,6 +275,7 @@
     5353
     53317
     22787
+    5173
   ];
   # Or disable the firewall altogether.
   networking.firewall.enable = true;
@@ -291,8 +301,8 @@
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
     extraCompatPackages = with pkgs; [
-  proton-ge-bin
-];
+      proton-ge-bin
+    ];
   };
 
   services.postgresql = {
