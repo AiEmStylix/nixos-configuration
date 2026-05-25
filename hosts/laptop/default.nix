@@ -75,6 +75,13 @@
   networking.hostName = "laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
+  networking.nameservers = [
+    "1.1.1.3"
+    "1.0.0.3"
+    "2606:4700:4700::1113" # IPv6
+    "2606:4700:4700::1003"
+  ];
+
   services.udev.extraRules = ''
     KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="plugdev"
   '';

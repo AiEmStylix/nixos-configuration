@@ -61,6 +61,7 @@
       enable = true;
       servers.gopls.enable = true;
       servers.zls.enable = true;
+      servers.clangd.enable = true;
     };
 
     plugins.tree-sitter.enable = true;

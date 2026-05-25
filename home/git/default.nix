@@ -16,4 +16,6 @@
   };
 
   programs.gh.enable = true;
+
+  programs.git.lfs.enable = true;
 }

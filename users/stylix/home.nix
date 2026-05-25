@@ -44,7 +44,6 @@
 
   home.packages = with pkgs; [
     docker-compose
-    winboat
     usbutils
     aseprite
     vscode
