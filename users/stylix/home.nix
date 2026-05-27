@@ -112,6 +112,7 @@
     localsend
 
     go
+    openssl
   ];
 
   programs.noctalia-shell = {
