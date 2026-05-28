@@ -113,6 +113,8 @@
 
     go
     openssl
+    # Debugger
+    lldb
   ];
 
   programs.noctalia-shell = {
