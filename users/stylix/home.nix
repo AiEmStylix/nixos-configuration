@@ -29,7 +29,7 @@
     ../../home/fzf
     ../../home/ripgrep
     ../../home/brave
-    ../../home/zellij
+    # ../../home/zellij
   ];
 
   # Config dotfiles

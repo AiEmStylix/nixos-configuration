@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  programs.zellij.enable = true;
+  programs.zellij = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 }
