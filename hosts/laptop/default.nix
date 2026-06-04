@@ -209,6 +209,7 @@
     "flakes"
   ];
   environment.systemPackages = with pkgs; [
+    inputs.look.packages.${pkgs.system}.default
     wget
     curl
     git
@@ -216,6 +217,7 @@
     distrobox
     watchman
     android-studio
+
     (
       let
         base = pkgs.appimageTools.defaultFhsEnvArgs;

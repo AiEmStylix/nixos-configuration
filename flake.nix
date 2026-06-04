@@ -1,6 +1,11 @@
 {
   description = "A very basic flake";
 
+  nixConfig = {
+    extra-substituters = [ "https://look.cachix.org" ];
+    extra-trusted-public-keys = [ "look.cachix.org-1:8elPCeSVBzlDZXqIRKBK9GyLIK/Hoe1xiWZF0ir7uX4=" ];
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -39,6 +44,8 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    look.url = "github:kunkka19xx/look?dir=apps/linows";
   };
 
   outputs =

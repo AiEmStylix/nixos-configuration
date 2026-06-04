@@ -157,6 +157,27 @@
         "type": "github"
       }
     },
+    "look": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_2",
+        "rust-overlay": "rust-overlay_2"
+      },
+      "locked": {
+        "dir": "apps/linows",
+        "lastModified": 1780482181,
+        "narHash": "sha256-LkDNh7bQHoaE32Oo0E0QM6FfQjqu9pPqZRNyj/IkqMk=",
+        "owner": "kunkka19xx",
+        "repo": "look",
+        "rev": "a286646f3c248305983aa4fc1f465bb5cf7d9dd6",
+        "type": "github"
+      },
+      "original": {
+        "dir": "apps/linows",
+        "owner": "kunkka19xx",
+        "repo": "look",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1777268161,
@@ -190,6 +211,22 @@
       }
     },
     "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1777954456,
+        "narHash": "sha256-hGdgeU2Nk87RAuZyYjyDjFL6LK7dAZN5RE9+hrDTkDU=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "549bd84d6279f9852cae6225e372cc67fb91a4c1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
       "locked": {
         "lastModified": 1777578337,
         "narHash": "sha256-fN6ynMvcdwPDB09LpWJNO5ogu+HFydrBWXJywoI/NNg=",
@@ -337,7 +374,8 @@
         "catppuccin": "catppuccin",
         "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
-        "nixpkgs": "nixpkgs_2",
+        "look": "look",
+        "nixpkgs": "nixpkgs_3",
         "nixvim": "nixvim",
         "noctalia": "noctalia",
         "nur": "nur",
@@ -366,9 +404,30 @@
         "type": "github"
       }
     },
+    "rust-overlay_2": {
+      "inputs": {
+        "nixpkgs": [
+          "look",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1778296574,
+        "narHash": "sha256-DVmg1JCjG0VJTa+FF6tH6tkQChaxzK1EzPL98RiRWU0=",
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "rev": "1d634a90dffb59ec9ba52652de311b15528c1595",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oxalica",
+        "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
     "spicetify-nix": {
       "inputs": {
-        "nixpkgs": "nixpkgs_3",
+        "nixpkgs": "nixpkgs_4",
         "systems": "systems_3"
       },
       "locked": {
