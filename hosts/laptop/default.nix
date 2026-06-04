@@ -18,6 +18,7 @@
 
   # Nvidia configuration
   hardware.graphics.enable = true;
+  services.xserver.windowManager.oxwm.enable = true;
   services.xserver.videoDrivers = [
     "nvidia"
     "modesetting"
