@@ -11,8 +11,6 @@
 
   # Import home-manager module
   imports = [
-    inputs.noctalia.homeModules.default # Noctalia shell
-    inputs.catppuccin.homeModules.catppuccin
     ../../home/nixvim
     ../../home/zathura
     ../../home/nh
@@ -35,12 +33,6 @@
   # Config dotfiles
   home.file = {
     ".config/niri".source = ../../home/niri;
-  };
-
-  catppuccin = {
-    enable = true;
-    fcitx5.enable = false;
-    cursors.enable = true;
   };
 
   home.packages = with pkgs; [
@@ -106,7 +98,6 @@
     php
     php84Packages.composer
     laravel
-    bun
 
     obs-studio
     gimp
@@ -117,10 +108,6 @@
     # Debugger
     lldb
   ];
-
-  programs.noctalia-shell = {
-    enable = true;
-  };
 
   programs.direnv = {
     enable = true;

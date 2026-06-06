@@ -18,7 +18,6 @@
 
   # Nvidia configuration
   hardware.graphics.enable = true;
-  services.xserver.windowManager.oxwm.enable = true;
   services.xserver.videoDrivers = [
     "nvidia"
     "modesetting"
@@ -97,8 +96,6 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  programs.niri.enable = true;
 
   # Enable networking
   networking.networkmanager.enable = true;

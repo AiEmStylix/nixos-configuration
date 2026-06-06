@@ -21,13 +21,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    catppuccin.url = "github:catppuccin/nix";
-
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,6 +38,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    oxwm = {
+      url = "github:tonybanters/oxwm";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     look.url = "github:kunkka19xx/look?dir=apps/linows";
   };
 
@@ -54,11 +52,10 @@
       nixpkgs,
       spicetify-nix,
       home-manager,
-      noctalia,
-      catppuccin,
       nur,
       nixvim,
       lanzaboote,
+      oxwm,
       ...
     }:
     {
@@ -71,7 +68,6 @@
             spicetify-nix.nixosModules.spicetify
             lanzaboote.nixosModules.lanzaboote
 
-            catppuccin.nixosModules.catppuccin
             nur.modules.nixos.default
             home-manager.nixosModules.home-manager
             {
@@ -86,7 +82,6 @@
                 ];
               };
             }
-
           ];
         };
       };
