@@ -17,20 +17,10 @@
   ];
 
   # Nvidia configuration
-  hardware.graphics.enable = true;
   services.xserver.videoDrivers = [
     "nvidia"
-    "modesetting"
   ];
-  hardware.nvidia.open = false; # see the note above
-  hardware.nvidia.prime = {
-    offload.enable = true;
-    offload.enableOffloadCmd = true;
-
-    #intelBusId = "PCI:0:2:0";
-    nvidiaBusId = "PCI:1@0:0:0";
-    amdgpuBusId = "PCI:5@0:0:0"; # If you have an AMD iGPU
-  };
+  hardware.nvidia.open = true;
 
   programs.dconf.enable = true;
 
@@ -54,19 +44,6 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  programs.spicetify =
-    let
-      spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
-    in
-    {
-      enable = true;
-      enabledExtensions = with spicePkgs.extensions; [
-        adblock
-        hidePodcasts
-        shuffle
-      ];
-    };
-
   virtualisation.docker = {
     # Consider disabling the system wide Docker daemon
     enable = true;
@@ -75,17 +52,6 @@
   networking.hostName = "laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  networking.nameservers = [
-    "1.1.1.3"
-    "1.0.0.3"
-    "2606:4700:4700::1113" # IPv6
-    "2606:4700:4700::1003"
-  ];
-
-  services.udev.extraRules = ''
-    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0660", GROUP="plugdev"
-  '';
-
   # Garbage collector
   nix.gc = {
     automatic = true;
@@ -93,7 +59,6 @@
     options = "--delete-older-than 7d";
   };
 
-  # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
@@ -244,8 +209,6 @@
     )
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
   # programs.mtr.enable = true;
   programs.gnupg.agent = {
     enable = true;
@@ -326,6 +289,7 @@
       # Cho phép đăng nhập bằng mật khẩu (nếu bạn chưa cài SSH Key)
     };
   };
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
@@ -333,5 +297,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Did you read the comment?
-
 }

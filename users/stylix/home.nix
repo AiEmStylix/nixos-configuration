@@ -47,7 +47,6 @@
     chromium
 
     # Misc
-    qemu # Virtual machine
     lazygit
     brightnessctl
     btop
@@ -65,7 +64,6 @@
     teamviewer
     gemini-cli
     pnpm
-    zed-editor
     qimgv
     rustc
 
